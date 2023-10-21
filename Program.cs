@@ -2,7 +2,7 @@
 string operacao;
 string sair;
 
-ExibeMenu();
+
 
 Console.WriteLine();
 Console.WriteLine("Aguarde...");
@@ -20,6 +20,9 @@ Console.WriteLine();
 
 do
 {
+    ExibeMenu();
+    ExibeOpcoes();
+
     switch (operacao)
     {
         case "+":
@@ -27,7 +30,7 @@ do
             Console.Write("O valor da soma é: ");
             break;
         case "-":
-            resultado = numero1 - numero2;
+            resultado = Subtracao(numero1, numero2);
             Console.Write("O valor da subtração é: ");
             break;
         case "/":
@@ -35,21 +38,19 @@ do
             Console.Write("O valor da divisão é: ");
             break;
         case "*":
-            resultado = numero1 * numero2;
+            resultado = Multiplicacao(numero1, numero2);
             Console.Write("O valor da multiplicação é: ");
             break;
         case "^":
-            resultado = Math.Pow(numero1, numero2);
+            resultado = Exponenciacao(numero1, numero2);
             Console.Write("O valor da exponeciação é: ");
             break;
         case "R":
-            numero2 = Convert.ToDouble(numero1);
-            resultado = Math.Sqrt(numero2);
+            resultado = RaizQuadrada(numero2);
             Console.WriteLine($"A raiz quadrada de {numero2} é: ");
             break;
         case "r":
-            numero2 = Convert.ToDouble(numero1);
-            resultado = Math.Sqrt(numero2);
+            resultado = RaizQuadrada(numero2);
             Console.WriteLine($"A raiz quadrada de {numero2} é: ");
             break;
 
@@ -98,6 +99,12 @@ void ExibeMenu()
     Console.ResetColor();
 }
 
+double Exponenciacao(double baseA, double expoente)
+{
+   double Exponenciacao = Math.Pow(baseA, expoente);
+    return Exponenciacao;
+}
+
 double SolicitaNumero(string ordemNumero)
 {
     double numero = 0;
@@ -135,3 +142,68 @@ double Divisao(double dividendo, double divisor)
         return dividendo / divisor;
     }
 }
+
+double ExecutaOperacao(string operacao, double numero01, double numero02)
+{
+    double resultado = 0;
+    switch (operacao)
+    {
+        case "+":
+            resultado = Soma(numero01, numero02);
+            Console.Write("O valor da soma é: ");
+            break;
+        case "-":
+            resultado = numero01 - numero02;
+            Console.Write("O valor da subtração é: ");
+            break;
+        case "/":
+            resultado = Divisao(numero01, numero02);
+            Console.Write("O valor da divisão é: ");
+            break;
+        case "*":
+            resultado = numero01 * numero02;
+            Console.Write("O valor da multiplicação é: ");
+            break;
+        case "^":
+            resultado = Math.Pow(numero01, numero02);
+            Console.Write("O valor da exponeciação é: ");
+            break;
+        case "R":
+            numero2 = Convert.ToDouble(numero01);
+            resultado = Math.Sqrt(numero02);
+            Console.WriteLine($"A raiz quadrada de {numero02} é: ");
+            break;
+        case "r":
+            numero2 = Convert.ToDouble(numero01);
+            resultado = Math.Sqrt(numero02);
+            Console.WriteLine($"A raiz quadrada de {numero02} é: ");
+            break;
+
+        default:
+            Console.WriteLine("Operação incorreta!");
+            break;
+    }
+    return resultado;
+}
+
+double Subtracao(double numero01, double numero02)
+{
+   double Subtracao = numero01 - numero02;
+    return Subtracao;
+
+}
+
+double Multiplicacao(double fator01, double fator02)
+{
+   double Multiplicacao = fator01 * fator02;
+    return Multiplicacao;
+}
+
+
+double RaizQuadrada(double indice)
+{
+    double RaizQuadrada = Math.Sqrt(indice);
+    return RaizQuadrada;
+}
+
+
